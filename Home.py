@@ -24,7 +24,7 @@ if button:
     st.session_state["CurrentValue"]=0
     st.session_state["Total"]=0
 
-if "a_counter" not in st.session_state:
+if "a_counter1" not in st.session_state:
         st.session_state["a_counter"]=0
         st.session_state["a_counter1"]={
             "one":4,
@@ -61,6 +61,7 @@ st.divider()
 
 # Buttons
 b1,b2,b3,b4=st.columns(4)
+# r1,r2,r3,r4=st.columns(4)
 
 
 with b1:
@@ -72,7 +73,16 @@ with b3:
 with b4:
     button4=st.button("x4")
 
-condition=(st.session_state["a_counter1"]["one"])+(st.session_state["a_counter1"]["two"])+(st.session_state["a_counter1"]["three"])+(st.session_state["a_counter1"]["four"])==0
+# with r1:
+#     st.text(st.session_state["a_counter1"]["one"])
+# with r2:
+#     st.text(st.session_state["a_counter1"]["two"])
+# with r3:
+#     st.text(st.session_state["a_counter1"]["three"])
+# with r4:
+#     st.text(st.session_state["a_counter1"]["four"])
+
+
 
 
 if button1:
@@ -85,7 +95,9 @@ if button1:
         value=df.loc[df["Squad"]== st.session_state["lastteam"],"G+A"].values[0]
         st.session_state["CurrentValue"]=value*1
         st.session_state["Total"]+=st.session_state["CurrentValue"]
-        st.session_state["crrteams"]=displayRandomTeam()
+        if (st.session_state["a_counter1"]["one"])+(st.session_state["a_counter1"]["two"])+(st.session_state["a_counter1"]["three"])+(st.session_state["a_counter1"]["four"])>0:
+            st.session_state["crrteams"]=displayRandomTeam()
+
 if button2:
     if st.session_state["a_counter1"]["two"]<1:
         st.error("Maximum limit passed")
@@ -96,7 +108,9 @@ if button2:
         value=df.loc[df["Squad"]== st.session_state["lastteam"],"G+A"].values[0]
         st.session_state["CurrentValue"]=value*2
         st.session_state["Total"]+=st.session_state["CurrentValue"]
-        st.session_state["crrteams"]=displayRandomTeam()
+        if (st.session_state["a_counter1"]["one"])+(st.session_state["a_counter1"]["two"])+(st.session_state["a_counter1"]["three"])+(st.session_state["a_counter1"]["four"])>0:
+            st.session_state["crrteams"] = displayRandomTeam()
+
 if button3:
     if st.session_state["a_counter1"]["three"]<1:
         st.error("Maximum limit passed")
@@ -109,8 +123,9 @@ if button3:
 
         st.session_state["CurrentValue"]=value*3
         st.session_state["Total"]+=st.session_state["CurrentValue"]
+        if (st.session_state["a_counter1"]["one"])+(st.session_state["a_counter1"]["two"])+(st.session_state["a_counter1"]["three"])+(st.session_state["a_counter1"]["four"])>0:
+            st.session_state["crrteams"] = displayRandomTeam()
 
-        st.session_state["crrteams"]=displayRandomTeam()
 if button4:
     if st.session_state["a_counter1"]["four"]<1:
         st.error("Maximum limit passed")
@@ -121,13 +136,15 @@ if button4:
         value=df.loc[df["Squad"]== st.session_state["lastteam"],"G+A"].values[0]
         st.session_state["CurrentValue"]=value*4
         st.session_state["Total"]+=st.session_state["CurrentValue"]
-        st.session_state["crrteams"]=displayRandomTeam()
-# if (st.session_state["a_counter1"]["one"])+(st.session_state["a_counter1"]["two"])+(st.session_state["a_counter1"]["three"])+(st.session_state["a_counter1"]["four"])==0:
-#     
+        if (st.session_state["a_counter1"]["one"])+(st.session_state["a_counter1"]["two"])+(st.session_state["a_counter1"]["three"])+(st.session_state["a_counter1"]["four"])>0:
+            st.session_state["crrteams"] = displayRandomTeam()
+
+
 if st.session_state["crrteams"] is None:
     st.session_state["crrteams"]=displayRandomTeam()
+condition=(st.session_state["a_counter1"]["one"])+(st.session_state["a_counter1"]["two"])+(st.session_state["a_counter1"]["three"])+(st.session_state["a_counter1"]["four"])==0
 if condition:
-    st.warning(f"🎯 All chances used! Your final score is {st.session_state['Total']} Reset to play again")
+    st.warning(f"🎯 All chances used! Your final score is {st.session_state['Total']}. Reset to play again")
 
 
 st.divider()
