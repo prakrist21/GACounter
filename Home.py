@@ -175,7 +175,7 @@ with tGA:
     else:
         st.write(" ")
     
-st.session_state
+# st.session_state
 
 
 
