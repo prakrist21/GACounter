@@ -127,7 +127,7 @@ if button4:
 if st.session_state["crrteams"] is None:
     st.session_state["crrteams"]=displayRandomTeam()
 if condition:
-    st.warning("🎯 All chances used!")
+    st.warning(f"🎯 All chances used! Your final score is {st.session_state['Total']} Reset to play again")
 
 
 st.divider()
