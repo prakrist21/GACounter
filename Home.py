@@ -156,7 +156,7 @@ if button4:
 #     
 if st.session_state["crrteams"] is None:
     st.session_state["crrteams"]=displayRandomTeam()
-st.write()
+
 st.divider()
 cGA,tGA=st.columns(2)
 
