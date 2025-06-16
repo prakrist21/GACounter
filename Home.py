@@ -53,7 +53,7 @@ def displayRandomTeam():
     team_picked=random.choice(remaining)
     st.html(f"<h1>{team_picked}</h1>")
     # displayedteams.append(team_picked)
-    st.session_state["displayedAlready"].append(remaining)
+    st.session_state["displayedAlready"].append(team_picked)
     return team_picked
         
 # st.write(teams_lst[0])
