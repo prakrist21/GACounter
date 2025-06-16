@@ -23,6 +23,7 @@ if button:
     st.session_state["lastteam"]=None
     st.session_state["CurrentValue"]=0
     st.session_state["Total"]=0
+
 if "a_counter" not in st.session_state:
         st.session_state["a_counter"]=0
         st.session_state["a_counter1"]={
@@ -42,26 +43,7 @@ if "a_counter" not in st.session_state:
         st.session_state["lastteam"]=None
         st.session_state["CurrentValue"]=0
         st.session_state["Total"]=0
-# def crreater():
-#     if "a_counter" not in st.session_state:
-#         st.session_state["a_counter"]=0
-#         st.session_state["a_counter1"]={
-#             "one":4,
-#             "two":2,
-#             "three":1,
-#             "four":1,
-#         }
-#         st.session_state["displayed_team"]={
-#             "one":[],
-#             "two":[],
-#             "three":[],
-#             "four":[],
-#         }
-#         st.session_state["crrteams"]=None
-#         st.session_state["lastteam"]=None
-#         st.session_state["CurrentValue"]=0
-#         st.session_state["Total"]=0
-# crreater()
+
 df=pd.read_csv("TopFiveLeagues.csv")
 teams_lst=df["Squad"].to_list()
 
@@ -71,7 +53,7 @@ def displayRandomTeam():
     team_picked=random.choice(remaining)
     st.html(f"<h1>{team_picked}</h1>")
     # displayedteams.append(team_picked)
-    st.session_state["displayedAlready"]
+    st.session_state["displayedAlready"].append(remaining)
     return team_picked
         
 # st.write(teams_lst[0])
@@ -89,21 +71,9 @@ with b3:
     button3=st.button("Triple")
 with b4:
     button4=st.button("x4")
+
 condition=(st.session_state["a_counter1"]["one"])+(st.session_state["a_counter1"]["two"])+(st.session_state["a_counter1"]["three"])+(st.session_state["a_counter1"]["four"])==0
 
-# if st.session_state["a_counter1"]["one"]+st.session_state["a_counter1"]["two"]+st.session_state["a_counter1"]["three"]+st.session_state["a_counter1"]["four"]==0:
-#     st.text(f"Game finished! Your score {st.session_state['Total']}")
-#     del st.session_state["a_counter"]
-#     del st.session_state["a_counter1"]
-#     del st.session_state["displayed_team"]
-#     del st.session_state["crrteams"]
-#     del st.session_state["lastteam"]
-#     del st.session_state["CurrentValue"]
-#     del st.session_state["Total"]
-
-# restart=st.button("restart")
-# if restart:
-#     crreater()
 
 if button1:
     if st.session_state["a_counter1"]["one"]<1:
