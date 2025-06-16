@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 import random
-
+st.title("Welcome to GA counter")
+st.subheader("All stats from 2024/25 season")
 button=st.button("Reset")
 if button:
     st.session_state["a_counter"]=0
